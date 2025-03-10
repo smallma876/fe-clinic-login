@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import styles from './Login.module.css';
 import { useForm } from 'react-hook-form';
-import { LoginInputs } from './login-validate';
 import { useNavigate } from 'react-router';
 import { userProxy } from '../../proxy/user/user';
+import { LoginFields, LoginInputs, LoginSchema } from './login.schema';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 const Login: FC = () => {
   const navigate = useNavigate();
@@ -11,9 +12,15 @@ const Login: FC = () => {
   const {
     register,
     getValues,
-    formState: { isValid },
+    formState: { isValid, errors },
   } = useForm<LoginInputs>({
-    mode: 'all',
+    mode: 'onChange',
+    resolver: yupResolver<LoginInputs>(LoginSchema),
+    defaultValues: {
+      typeDocument: 'dni',
+      document: '',
+      password: '',
+    },
   });
 
   const onRegister = () => {
@@ -27,7 +34,6 @@ const Login: FC = () => {
         document,
         password,
       });
-      console.log('login success');
       window.location.href = 'http://localhost:5176/dashboard/init';
     } catch (error) {
       console.log(error);
@@ -37,20 +43,21 @@ const Login: FC = () => {
   return (
     <form className={styles.loginForm}>
       <h1>Login</h1>
-      <p>Log in to access the full dashboard</p>
+      <p>Ingresa tus datos para ingresar</p>
       <label htmlFor="document">Tipo de documento</label>
       <select id="typeDocument" {...register('typeDocument', { required: 'type document is required' })}>
-        <option value="">selecciona</option>
         <option value="dni">DNI</option>
         <option value="passport">PASAPORTE</option>
       </select>
-      <label htmlFor="document">Nombre de usuario</label>
+      {errors[LoginFields.TypeDocument] && <p>{errors[LoginFields.TypeDocument].message}</p>}
+      <label htmlFor="document">Documento</label>
       <input
         type="text"
         placeholder="document"
         id="document"
         {...register('document', { required: 'Document is required' })}
       />
+      {errors[LoginFields.Document] && <p>{errors[LoginFields.Document].message}</p>}
       <label htmlFor="password">Contrasena</label>
       <input
         type="password"
@@ -58,6 +65,7 @@ const Login: FC = () => {
         id="password"
         {...register('password', { required: 'Password is required' })}
       />
+      {errors[LoginFields.Password] && <p>{errors[LoginFields.Password].message}</p>}
       <label htmlFor="remember">
         Recordar usuario
         <input type="checkbox" id="remember" name="remember" value="remember" />
