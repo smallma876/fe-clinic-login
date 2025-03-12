@@ -5,8 +5,12 @@ import { useNavigate } from 'react-router';
 import { userProxy } from '../../proxy/user/user';
 import { LoginFields, LoginInputs, LoginSchema } from './login.schema';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { handlerError } from '../../../../shared/handler-error/handler-error';
+import { useAppDispatch } from '../../../../store/app-context';
+import ClinicError from '../../../../shared/clinic-error.ts/ClinicError';
 
 const Login: FC = () => {
+  const dispatchApp = useAppDispatch();
   const navigate = useNavigate();
 
   const {
@@ -30,13 +34,11 @@ const Login: FC = () => {
   const onLogin = async () => {
     try {
       const { document, password } = getValues();
-      await userProxy.login({
-        document,
-        password,
-      });
+      await userProxy.login({ document, password });
+
       window.location.href = 'http://localhost:5176/dashboard/init';
     } catch (error) {
-      console.log(error);
+      handlerError({ dispatchApp, error: error as ClinicError });
     }
   };
 

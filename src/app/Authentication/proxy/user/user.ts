@@ -11,13 +11,12 @@ const login = async ({ document, password }: LoginRequest) => {
   });
 
   const result = await response.json();
-  
+
   if (response.ok) {
-    console.log('Redirección seguida automáticamente');
-    return;
+    return result;
   }
 
-  throw new ClinicError(result);
+  throw new ClinicError({ statusCode: response.status, ...result });
 };
 
 export const userProxy = {
