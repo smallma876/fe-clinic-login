@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { ClinicErrorPresentation } from '../../../domain/clinic-error-presentation.interface';
+import ErrorPage from '../ErrorPage';
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
@@ -8,7 +9,7 @@ interface ErrorBoundaryProps {
 
 const ErrorBoundary: FC<ErrorBoundaryProps> = ({ children, error }) => {
   if (error) {
-    return <div>ErrorBoundary</div>;
+    return <ErrorPage error={error} />;
   }
 
   return <>{children}</>;

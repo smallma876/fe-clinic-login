@@ -8,7 +8,15 @@ interface HandlerError {
 }
 
 export const handlerError = ({ error, dispatchApp }: HandlerError) => {
-  const errorPresentation = getErrorPage(error);
+  const errorPresentation = getErrorPage({
+    error,
+    onClickPrimary: (buttonLabel: string) => {
+      console.log('on click primary');
+      if (buttonLabel === 'Volver a intentar') {
+        dispatchApp({ type: AppActionsType.CLEAR_ERROR });
+      }
+    },
+  });
 
   dispatchApp({
     type: AppActionsType.SET_ERROR,

@@ -1,8 +1,9 @@
 export interface ClinicErrorPresentation {
   message: string;
   code: string;
-  status: number;
   timestamp: string;
   presentation: string;
   title: string;
+  buttonLabel: string;
+  onClickErrorPresentation: (buttonLabel: string) => void;
 }
