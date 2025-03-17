@@ -36,7 +36,7 @@ const Login: FC = () => {
       const { document, password } = getValues();
       await userProxy.login({ document, password });
 
-      window.location.href = 'http://localhost:5176/dashboard/init';
+      window.location.href = 'http://localhost:5175/dashboard/init';
     } catch (error) {
       handlerError({ dispatchApp, error: error as ClinicError });
     }
@@ -47,7 +47,10 @@ const Login: FC = () => {
       <h1>Login</h1>
       <p>Ingresa tus datos para ingresar</p>
       <label htmlFor="document">Tipo de documento</label>
-      <select id="typeDocument" {...register('typeDocument', { required: 'type document is required' })}>
+      <select
+        id="typeDocument"
+        {...register('typeDocument', { required: 'type document is required' })}
+      >
         <option value="dni">DNI</option>
         <option value="passport">PASAPORTE</option>
       </select>

@@ -9,7 +9,7 @@ const Register = lazy(() => import('./pages/Register/Register'));
 
 const Authentication = () => {
   const { error } = useAppState();
-  console.log({ error });
+
   return (
     <Suspense fallback={<div> ...cargando</div>}>
       <ErrorBoundary error={error}>
