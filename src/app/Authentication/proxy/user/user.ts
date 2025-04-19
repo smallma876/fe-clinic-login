@@ -1,10 +1,11 @@
+import { apiUrl } from '../../../../globals';
 import ClinicError from '../../../../shared/clinic-error.ts/ClinicError';
 import { LoginRequest } from '../../domain/login';
 
-const api = '/cli-api/auth';
+const resource = '/cli-api/auth';
 
 const login = async ({ document, password }: LoginRequest) => {
-  const response = await fetch(`${api}/login`, {
+  const response = await fetch(`${apiUrl}${resource}/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ document, password }),
