@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import styles from './Login.module.css';
+import styles from './login.module.css';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import { userProxy } from '../../proxy/user/user';
