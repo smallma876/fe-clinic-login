@@ -1,4 +1,4 @@
-import CardMenu from '../../../../components/CardMenu/CardMenu';
+import CardMenu from "@/shared/components/CardMenu/CardMenu";
 
 const ServiceType = () => {
   const onClickBySpecialty = () => {

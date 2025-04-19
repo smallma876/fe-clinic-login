@@ -1,9 +1,9 @@
-import { CardType } from '../../../../components/Card/card.enum';
-import Card from '../../../../components/Card';
-import ButtonPrimary from '../../../../components/ButtonPrimary/ButtonPrimary';
 import { useNavigate } from 'react-router';
 import { useEffect } from 'react';
 import { SchedulerProxy } from '../../proxy/scheduler';
+import Card from '@/shared/components/Card';
+import { CardType } from '@/shared/components/Card/card.enum';
+import ButtonPrimary from '@/shared/components/ButtonPrimary/ButtonPrimary';
 
 const Init = () => {
   const navigate = useNavigate();

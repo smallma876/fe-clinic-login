@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router';
-import MenuBar from '../../../components/MenuBar/MenuBar';
 import styles from './dashboard-layout.module.css';
+import MenuBar from '@/shared/components/MenuBar/MenuBar';
 
 const DashboardLayout = () => {
   return (
