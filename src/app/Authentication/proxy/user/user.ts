@@ -2,7 +2,7 @@ import { apiUrl } from '../../../../globals';
 import ClinicError from '../../../../shared/clinic-error.ts/ClinicError';
 import { LoginRequest } from '../../domain/login';
 
-const resource = '/cli-api/auth';
+const resource = '/cli-api/user';
 
 const login = async ({ document, password }: LoginRequest) => {
   const response = await fetch(`${apiUrl}${resource}/login`, {
