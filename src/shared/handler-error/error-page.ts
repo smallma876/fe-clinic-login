@@ -10,8 +10,7 @@ export const getErrorPage = ({
   error,
   onClickPrimary,
 }: GetErrorPageProps): ClinicErrorPresentation => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { message, code, title } = error;
+  const { code } = error;
 
   return {
     message: 'Error Inesperado',
