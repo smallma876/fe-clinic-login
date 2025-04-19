@@ -1,9 +1,10 @@
+import { apiUrl } from '@/globals';
 import ClinicError from '../../../shared/clinic-error.ts/ClinicError';
 
 const apiResource = 'patient';
 
 const getPatient = async () => {
-  const response = await fetch(`/cli-api/${apiResource}`, {
+  const response = await fetch(`${apiUrl}/cli-api/${apiResource}`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
   });
