@@ -7,6 +7,7 @@ const getPatient = async () => {
   const response = await fetch(`${apiUrl}/cli-api/${apiResource}`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
   });
 
   const result = await response.json();

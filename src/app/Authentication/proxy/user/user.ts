@@ -8,6 +8,7 @@ const login = async ({ document, password }: LoginRequest) => {
   const response = await fetch(`${apiUrl}${resource}/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
     body: JSON.stringify({ document, password }),
   });
 
