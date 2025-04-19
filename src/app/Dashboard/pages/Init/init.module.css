@@ -1,0 +1,26 @@
+.init {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    'header header header'
+    'block1 block2 block3';
+  gap: 10px;
+}
+
+.header {
+  grid-area: header;
+}
+
+.block1 {
+  grid-area: block1;
+}
+
+.block2 {
+  grid-area: block2;
+}
+
+.block3 {
+  grid-area: block3;
+}

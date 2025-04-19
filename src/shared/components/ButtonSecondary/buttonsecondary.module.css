@@ -1,0 +1,9 @@
+.buttonsecondary {
+  background-color: #ffffff;
+  color: #0033a0;
+  border: 1px solid #0033a0;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 36px;
+}

@@ -1,0 +1,15 @@
+.cardMenu {
+  border-radius: 10px;
+  border: none;
+  background-color: #fff;
+  padding: 1rem;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.cardMenu img {
+  width: 20px;
+}

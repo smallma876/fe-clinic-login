@@ -36,7 +36,7 @@ const Login: FC = () => {
       const { document, password } = getValues();
       await userProxy.login({ document, password });
 
-      window.location.href = 'http://localhost:5175/dashboard/init';
+      navigate('/dashboard/init');
     } catch (error) {
       handlerError({ dispatchApp, error: error as ClinicError });
     }
