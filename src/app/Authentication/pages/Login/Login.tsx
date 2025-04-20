@@ -36,7 +36,7 @@ const Login: FC = () => {
       const { document, password } = getValues();
       await userProxy.login({ document, password });
 
-      /*  navigate('/dashboard/init'); */
+      navigate('/dashboard/init');
     } catch (error) {
       handlerError({ dispatchApp, error: error as ClinicError });
     }
