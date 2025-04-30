@@ -1,13 +1,14 @@
 import { FC } from 'react';
-import styles from './login.module.css';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import { userProxy } from '../../proxy/user/user';
 import { LoginFields, LoginInputs, LoginSchema } from './login.schema';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { handlerError } from '../../../../shared/handler-error/handler-error';
-import { useAppDispatch } from '../../../../store/app-context';
-import ClinicError from '../../../../shared/clinic-error.ts/ClinicError';
+import ClinicError from '@/shared/clinic-error.ts/ClinicError';
+import { useAppDispatch } from '@/store/app-context';
+import { handlerError } from '@/shared/handler-error/handler-error';
+import ButtonPrimary from '@/shared/components/ButtonPrimary/ButtonPrimary';
+import ButtonSecondary from '@/shared/components/ButtonSecondary/ButtonSecondary';
 
 const Login: FC = () => {
   const dispatchApp = useAppDispatch();
@@ -43,12 +44,13 @@ const Login: FC = () => {
   };
 
   return (
-    <form className={styles.loginForm}>
+    <form className="flex flex-col">
       <h1>Login</h1>
       <p>Ingresa tus datos para ingresar</p>
       <label htmlFor="document">Tipo de documento</label>
       <select
         id="typeDocument"
+        className="rounded-sm border-1"
         {...register('typeDocument', { required: 'type document is required' })}
       >
         <option value="dni">DNI</option>
@@ -60,6 +62,7 @@ const Login: FC = () => {
         type="text"
         placeholder="document"
         id="document"
+        className="rounded-sm border-1"
         {...register('document', { required: 'Document is required' })}
       />
       {errors[LoginFields.Document] && <p>{errors[LoginFields.Document].message}</p>}
@@ -68,6 +71,7 @@ const Login: FC = () => {
         type="password"
         placeholder="password"
         id="password"
+        className="rounded-sm border-1"
         {...register('password', { required: 'Password is required' })}
       />
       {errors[LoginFields.Password] && <p>{errors[LoginFields.Password].message}</p>}
@@ -75,13 +79,10 @@ const Login: FC = () => {
         Recordar usuario
         <input type="checkbox" id="remember" name="remember" value="remember" />
       </label>
-
-      <button type="button" disabled={!isValid} onClick={onLogin}>
-        Login in
-      </button>
-      <button type="button" onClick={onRegister}>
-        Registrar
-      </button>
+      <ButtonPrimary onClick={onLogin} isLoading={false} disabled={!isValid}>
+        Login 2
+      </ButtonPrimary>
+      <ButtonSecondary onClick={onRegister}>Registrar 2</ButtonSecondary>
     </form>
   );
 };

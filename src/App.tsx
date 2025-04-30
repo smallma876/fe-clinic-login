@@ -1,5 +1,6 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router';
+import './App.css';
 
 const Authentication = lazy(() => import('./app/Authentication/Authentication'));
 const DashboardRouter = lazy(() => import('./app/Dashboard/DashboardRouter'));

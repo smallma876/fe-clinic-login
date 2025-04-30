@@ -5,7 +5,7 @@ import ErrorBoundary from '../../shared/components/ErrorBoundary';
 import { useAppState } from '../../store/app-context';
 
 const Login = lazy(() => import('./pages/Login/Login'));
-const Register = lazy(() => import('./pages/Register/Register'));
+const Register = lazy(() => import('./pages/UserAndPassword/UserAndPassword'));
 
 const Authentication = () => {
   const { error } = useAppState();

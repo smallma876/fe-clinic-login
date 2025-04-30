@@ -1,5 +1,5 @@
+import { DniRegex, PassportRegex } from '@/shared/regex/regex';
 import { object as yupObject, string as yupString } from 'yup';
-import { DniRegex, PassportRegex } from '../../../../shared/regex/regex';
 
 export enum LoginFields {
   TypeDocument = 'typeDocument',
