@@ -1,7 +1,7 @@
 import { ErrorUIField } from '@/domain/error.interface';
 import { ChangeEvent, FC, InputHTMLAttributes, useState } from 'react';
 
-interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
+interface PasswordFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
   error?: ErrorUIField;
   label?: string;
@@ -9,7 +9,7 @@ interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   defaultValue?: string;
 }
 
-const TextField: FC<TextFieldProps> = ({
+const PasswordField: FC<PasswordFieldProps> = ({
   label,
   id,
   value,
@@ -25,9 +25,7 @@ const TextField: FC<TextFieldProps> = ({
     if (!isControlled) {
       setInternalValue(event.target.value);
     }
-    if (onChange) {
-      onChange(event);
-    }
+    onChange?.(event);
   };
 
   return (
@@ -35,7 +33,7 @@ const TextField: FC<TextFieldProps> = ({
       <label htmlFor="document">{label}</label>
       <input
         id={id}
-        type="text"
+        type="password"
         className="rounded-sm border-1 border-gray-700 h-9 outline-none p-2"
         value={isControlled ? value : internalValue}
         onChange={handleChange}
@@ -46,4 +44,4 @@ const TextField: FC<TextFieldProps> = ({
   );
 };
 
-export default TextField;
+export default PasswordField;

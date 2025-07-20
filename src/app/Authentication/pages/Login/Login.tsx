@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import { userProxy } from '../../proxy/user/user';
@@ -7,12 +7,18 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import ClinicError from '@/shared/clinic-error.ts/ClinicError';
 import { useAppDispatch } from '@/store/app-context';
 import { handlerError } from '@/shared/handler-error/handler-error';
-import ButtonPrimary from '@/shared/components/ButtonPrimary/ButtonPrimary';
-import ButtonSecondary from '@/shared/components/ButtonSecondary/ButtonSecondary';
+/* import ButtonPrimary from '@/shared/components/ButtonPrimary/ButtonPrimary';
+import ButtonSecondary from '@/shared/components/ButtonSecondary/ButtonSecondary'; */
+import TextField from '@/shared/components/TextField/TextField';
+import Selector from '@/shared/components/Selector/Selector';
+import PasswordField from '@/shared/components/PasswordField/PasswordField';
+import Checkbox from '@/shared/components/Checkbox/Checkbox';
+import ButtonPrimary from 'fe-clinic-components/';
 
 const Login: FC = () => {
   const dispatchApp = useAppDispatch();
   const navigate = useNavigate();
+  const [saveUser, setSaveUser] = useState(false);
 
   const {
     register,
@@ -46,39 +52,37 @@ const Login: FC = () => {
   return (
     <form className="flex flex-col">
       <h1>Login</h1>
-      <p>Ingresa tus datos para ingresar</p>
-      <label htmlFor="document">Tipo de documento</label>
-      <select
-        id="typeDocument"
-        className="rounded-sm border-1"
-        {...register('typeDocument', { required: 'type document is required' })}
-      >
-        <option value="dni">DNI</option>
-        <option value="passport">PASAPORTE</option>
-      </select>
+      <p>En Clinica Esperanza nos preocupamos por ti.</p>
       {errors[LoginFields.TypeDocument] && <p>{errors[LoginFields.TypeDocument].message}</p>}
-      <label htmlFor="document">Documento</label>
-      <input
-        type="text"
-        placeholder="document"
-        id="document"
-        className="rounded-sm border-1"
+      <Selector id="typeDocumentField" label="Tipo de documento">
+        <option value="DNI">DNI</option>
+        <option value="RUC">RUC</option>
+      </Selector>
+      <TextField
+        id="documentField"
+        label="Documento"
+        error={{ message: errors[LoginFields.Document]?.message || '' }}
         {...register('document', { required: 'Document is required' })}
       />
-      {errors[LoginFields.Document] && <p>{errors[LoginFields.Document].message}</p>}
-      <label htmlFor="password">Contrasena</label>
-      <input
-        type="password"
+      <PasswordField
+        label="Contraseña"
+        id="passwordField"
         placeholder="password"
-        id="password"
-        className="rounded-sm border-1"
+        error={{ message: errors[LoginFields.Password]?.message || '' }}
         {...register('password', { required: 'Password is required' })}
       />
-      {errors[LoginFields.Password] && <p>{errors[LoginFields.Password].message}</p>}
-      <label htmlFor="remember">
+      {/* <label htmlFor="remember">
         Recordar usuario
         <input type="checkbox" id="remember" name="remember" value="remember" />
-      </label>
+      </label> */}
+      <Checkbox
+        id={'rememberField'}
+        label="Recordar usuario"
+        checked={saveUser}
+        onChange={() => {
+          setSaveUser(!saveUser);
+        }}
+      />
       <ButtonPrimary onClick={onLogin} isLoading={false} disabled={!isValid}>
         Login 2
       </ButtonPrimary>

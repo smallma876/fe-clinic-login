@@ -4,6 +4,7 @@ import { SchedulerProxy } from '../../proxy/scheduler';
 import Card from '@/shared/components/Card';
 import { CardType } from '@/shared/components/Card/card.enum';
 import ButtonPrimary from '@/shared/components/ButtonPrimary/ButtonPrimary';
+import TextField from '@/shared/components/TextField/TextField';
 
 const Init = () => {
   const navigate = useNavigate();
@@ -23,6 +24,11 @@ const Init = () => {
 
   return (
     <div>
+      <TextField
+        id="documentField"
+        label="Documento"
+      />
+      
       <Card type={CardType.Secondary}>
         <h3>Para quien es la cita?</h3>
         <Card>

@@ -15,6 +15,7 @@
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",
     "@tailwindcss/vite": "^4.1.4",
+    "fe-clinic-components": "file:../fe-clinic-components/fe-clinic-components-0.0.1.tgz",
     "fe-login": "file:",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
