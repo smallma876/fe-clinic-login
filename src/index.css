@@ -1,2 +1,6 @@
 @import "tailwindcss";
+/* dado que la librería no empaqueta tailwind, 
+   el consumidor debe hacerlo y decirle a tailwind 
+   que escanee desde nodemodules
+*/
 @source "../node_modules/@sergio.mallma/fe-clinic-components";

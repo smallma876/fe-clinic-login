@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",
-    "@sergio.mallma/fe-clinic-components": "^1.0.8",
+    "@sergio.mallma/fe-clinic-components": "^1.0.10",
     "@tailwindcss/vite": "^4.1.4",
     "fe-login": "file:",
     "react": "^19.0.0",
