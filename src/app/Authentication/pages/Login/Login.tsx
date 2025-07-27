@@ -7,8 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import ClinicError from '@/shared/clinic-error.ts/ClinicError';
 import { useAppDispatch } from '@/store/app-context';
 import { handlerError } from '@/shared/handler-error/handler-error';
-import ButtonPrimary from '@/shared/components/ButtonPrimary/ButtonPrimary';
-import ButtonSecondary from '@/shared/components/ButtonSecondary/ButtonSecondary';
+import { ButtonPrimary, ButtonSecondary, Checkbox, PasswordField, Selector, TextField } from '@sergio.mallma/fe-clinic-components';
 
 const Login: FC = () => {
   const dispatchApp = useAppDispatch();
@@ -44,45 +43,39 @@ const Login: FC = () => {
   };
 
   return (
-    <form className="flex flex-col">
+    <form className="flex flex-col w-full">
       <h1>Login</h1>
       <p>Ingresa tus datos para ingresar</p>
-      <label htmlFor="document">Tipo de documento</label>
-      <select
-        id="typeDocument"
-        className="rounded-sm border-1"
-        {...register('typeDocument', { required: 'type document is required' })}
+      <Selector
+        id='documentType'
+        label='Tipo de documento'
       >
         <option value="dni">DNI</option>
         <option value="passport">PASAPORTE</option>
-      </select>
-      {errors[LoginFields.TypeDocument] && <p>{errors[LoginFields.TypeDocument].message}</p>}
-      <label htmlFor="document">Documento</label>
-      <input
-        type="text"
-        placeholder="document"
+      </Selector>
+      <TextField
+        label='Documento'
         id="document"
-        className="rounded-sm border-1"
-        {...register('document', { required: 'Document is required' })}
+        placeholder="document"
+       /*  error={{ message: errors[LoginFields.Document]?.message ?? "" }}
+        {...register('document', { required: 'Document is required' })} */
       />
-      {errors[LoginFields.Document] && <p>{errors[LoginFields.Document].message}</p>}
-      <label htmlFor="password">Contrasena</label>
-      <input
-        type="password"
+      <PasswordField
+        label='Contraseña'
         placeholder="password"
         id="password"
-        className="rounded-sm border-1"
+        error={{ message: errors[LoginFields.Password]?.message ?? "" }}
         {...register('password', { required: 'Password is required' })}
       />
-      {errors[LoginFields.Password] && <p>{errors[LoginFields.Password].message}</p>}
-      <label htmlFor="remember">
-        Recordar usuario
-        <input type="checkbox" id="remember" name="remember" value="remember" />
-      </label>
+      <Checkbox
+        id="remember"
+        label='Recordar usuario'
+        value="remember"
+      />
       <ButtonPrimary onClick={onLogin} isLoading={false} disabled={!isValid}>
-        Login 2
+        Ingresar
       </ButtonPrimary>
-      <ButtonSecondary onClick={onRegister}>Registrar 2</ButtonSecondary>
+      <ButtonSecondary onClick={onRegister}>Registrar</ButtonSecondary>
     </form>
   );
 };
