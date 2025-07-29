@@ -1,10 +1,21 @@
 {
   "compilerOptions": {
-    "types": ["node"],
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    //types se enfoca en incluir definiciones de tipos de paquetes externos o en anular las predeterminadas. 
+    // tipos que se encuentren en el node-modules dentro de una carpeta @types/.. 
+    // en este caso node-modules/@types/node, incluye todos los tipos de node de manera global
+    // por tal motivo se puede usar proccess, console.log, etc.
+    // si se omite typescript, agregará todos los @types que encuentre en node-modules∫
+    "types": [
+      "node"
+    ],
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
     "skipLibCheck": true,
     "baseUrl": ".",
@@ -16,9 +27,10 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ]
     },
-
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
@@ -26,5 +38,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }
