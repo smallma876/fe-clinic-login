@@ -9,7 +9,7 @@ const login = async ({ document, password }: LoginRequest) => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
-    body: JSON.stringify({ document, password }),
+    body: JSON.stringify({ document_number: document, password }),
   });
 
   const result = await response.json();
